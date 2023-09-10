@@ -18,6 +18,8 @@ Create and publish TS/JS NPM packages seamlessly.
 3. Create a NPM secret and add it to the project secrets:
     - Generate Token in `https://www.npmjs.com/settings/<your-profile>/tokens`
     - Create a `New repository secret` named `NPM_TOKEN` and copy its value (`https://github.com/<username>/<project-name>/settings/secrets/actions`)
+4. (Optional) Add codecov flow:
+    - Go to [codecov](https://about.codecov.io/), login, find your project and add the given `CODECOV_TOKEN` to your project secrets (`https://github.com/<username>/<project-name>/settings/secrets/actions`).
 
 ## How to skip the `npm publish` step
 
