@@ -15,10 +15,11 @@ Create and publish TS/JS NPM packages seamlessly.
     - keywords
     - repository
     - author
-3. Create a NPM secret and add it to the project secrets:
+3. Add `Read and write permissions` and `Allow GitHub Actions to create and approve pull requests` in `https://github.com/<username>/<project-name>/settings/actions`
+4. Create a NPM secret and add it to the project secrets:
     - Generate Token in `https://www.npmjs.com/settings/<your-profile>/tokens`
     - Create a `New repository secret` named `NPM_TOKEN` and copy its value (`https://github.com/<username>/<project-name>/settings/secrets/actions`)
-4. (Optional) Add codecov flow:
+5. (Optional) Add codecov flow:
     - Go to [codecov](https://about.codecov.io/), login, find your project and add the given `CODECOV_TOKEN` to your project secrets (`https://github.com/<username>/<project-name>/settings/secrets/actions`).
 
 ## How to skip the `npm publish` step
@@ -27,5 +28,17 @@ As you can check in [.releaserc](.releaserc) and [release.yml workflow](.github/
 
 To skip a CI include `[skip ci]` in the commit title or cancel the Github action.
 
+## How to trigger new versions
 
+This follows the conventional commits, so to trigger:
+- patch: Add a `fix` commit to a relevant branch .
+- minor: Add a `feat` commit to a relevant branch .
+- major: Add a `BREAKING CHANGE: description` footer commit to a relevant branch like:
 
+```
+feat: New core processing
+
+BREAKING CHANGE: core functions are broken and not backward compatible.
+```
+
+**IMPORTANT**: Commits with `!` will not trigger a new version nor will be recorded in the changelog (example: `feat!: breaking stuffs`).
